@@ -1,5 +1,12 @@
 import React, { createContext } from 'react';
-import Post from './components/Post';
+import PostPage from './pages/PostPage/PostPage';
+import { HashRouter, Switch, Route, Link } from 'react-router-dom'
+import constants from './utils/constants';
+import HomePage from './pages/HomePage/HomePage';
+import NoMatch from './pages/NoMatch/NoMatch';
+import LoginPage from './pages/LoginPage/LoginPage';
+import PrivateRoute from './auth/PrivateRoute';
+import AuthProvider from './auth/AuthProvider';
 
 
 //Remember context can be used for easy pass of data
@@ -16,9 +23,22 @@ export const AuthContext = createContext<User | null>(null);
 function App() {
   return (
     <AuthContext.Provider value={user}>
-      <div>
-        <Post />
-      </div>
+      <AuthProvider>
+        <HashRouter>
+          <Switch>
+            <Route path={constants.routes.homePage}>
+              <HomePage />
+            </Route>
+            <Route path={constants.routes.login}>
+              <LoginPage />
+            </Route>
+            <PrivateRoute path={constants.routes.postPage}>
+              <PostPage />
+            </PrivateRoute>
+            <Route path={constants.routes.noMatch} component={NoMatch} />
+          </Switch>
+        </HashRouter>
+      </AuthProvider>
     </AuthContext.Provider>
   );
 }

@@ -4,7 +4,10 @@ const constants = {
     fetchPost: 'https://jsonplaceholder.typicode.com/todos/'
   },
   routes: {
-    homePage: '/home'
+    homePage: '/homePage',
+    login: '/login',
+    postPage: '/postPage',
+    noMatch: '*'
   }
 }
 
