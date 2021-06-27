@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { RootState } from '../ducks/index';
+import { RootState } from '../../ducks/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPostRequest } from '../ducks/postReducer/postReducer';
-import { AuthContext } from '../App';
-const Post: React.FC = () => {
+import { fetchPostRequest } from '../../ducks/postReducer/postReducer';
+import { AuthContext } from '../../App';
+const PostPage: React.FC = () => {
   const dispatch = useDispatch();
   const user  = useContext(AuthContext);
   const { posts } = useSelector((state: RootState) => {
@@ -15,16 +15,16 @@ const Post: React.FC = () => {
   
   return (
     <>
-      <div>
+      <div id="store">
         From Store
         {posts.map((post) => {
           return (
-            <div id={`${post.id}`}>{post.id}</div>
+            <div key={`${post.id}`}>{post.id}</div>
           )
         })
         }
       </div>
-      <div>
+      <div id="context" >
         From AuthContext
         <div>{user?.id}</div>
         <div>{user?.name}</div>
@@ -33,4 +33,4 @@ const Post: React.FC = () => {
   )
 }
 
-export default Post;
+export default PostPage;
