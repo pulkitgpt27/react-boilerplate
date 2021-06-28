@@ -7,6 +7,7 @@ const constants = {
     homePage: '/homePage',
     login: '/login',
     postPage: '/postPage',
+    lazyImage: '/lazyimage',
     noMatch: '*'
   }
 }
