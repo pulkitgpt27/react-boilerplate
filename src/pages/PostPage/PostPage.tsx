@@ -10,7 +10,7 @@ const PostPage: React.FC = () => {
     return state.posts
   })
   useEffect(() => {
-    dispatch(fetchPostRequest({postId: 1}))
+    dispatch(fetchPostRequest({postId: 1000}))
   }, [dispatch])
   
   return (
