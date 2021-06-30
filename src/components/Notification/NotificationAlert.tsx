@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Alert from "react-bootstrap/Alert";
-import { Notification, NotificationLevel } from "../../ducks/notificationReducer/notificationReducer";
+import { Notification, NotificationLevel } from "../../reducers/notificationReducer/notificationReducer";
 import "./NotificationAlert.scss";
 interface NotificationAlertProps {
   notification: Notification, 
