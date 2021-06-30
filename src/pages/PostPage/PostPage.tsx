@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import { RootState } from '../../ducks/index';
+import { RootState } from '../../reducers/index';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchPostRequest } from '../../ducks/postReducer/postReducer';
+import { fetchPostRequest } from '../../reducers/postReducer/postReducer';
 import { AuthContext } from '../../App';
 const PostPage: React.FC = () => {
   const dispatch = useDispatch();

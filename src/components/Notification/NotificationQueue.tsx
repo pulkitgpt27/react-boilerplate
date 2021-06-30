@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Notification } from '../../ducks/notificationReducer/notificationReducer';
+import { Notification } from '../../reducers/notificationReducer/notificationReducer';
 import NotificationAlert from './NotificationAlert';
-import {toggleNotificationRead, selectUnreadNotifications } from '../../ducks/notificationReducer/notificationReducer';
+import {toggleNotificationRead, selectUnreadNotifications } from '../../reducers/notificationReducer/notificationReducer';
 import './NotificationQueue.scss';
 
 interface NotificationQueueProps {

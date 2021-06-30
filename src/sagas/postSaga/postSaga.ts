@@ -1,9 +1,9 @@
 import { call, fork, takeLatest, all, put } from "redux-saga/effects";
-import * as actions from "../../ducks/postReducer/postReducer";
+import * as actions from "../../reducers/postReducer/postReducer";
 import * as api from '../../api/api';
 import constants from '../../utils/constants';
 import { PostType } from '../../types/post';
-import { addNotification, NotificationLevel } from '../../ducks/notificationReducer/notificationReducer';
+import { addNotification, NotificationLevel } from '../../reducers/notificationReducer/notificationReducer';
 
 
 function* fetchPostSaga(action: any) {
