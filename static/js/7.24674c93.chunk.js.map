@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/NoMatch/NoMatch.tsx"],"names":["NoMatch"],"mappings":"+IAMeA,UANC,WACd,OACE","file":"static/js/7.24674c93.chunk.js","sourcesContent":["const NoMatch = () => {\n  return (\n    <div>NoMatch</div>\n  )\n}\n\nexport default NoMatch;"],"sourceRoot":""}

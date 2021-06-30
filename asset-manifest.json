@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/pulkitgpt27/react-boilerplate/static/css/main.453e685c.chunk.css",
+    "main.js": "/pulkitgpt27/react-boilerplate/static/js/main.fa941d57.chunk.js",
+    "main.js.map": "/pulkitgpt27/react-boilerplate/static/js/main.fa941d57.chunk.js.map",
+    "runtime-main.js": "/pulkitgpt27/react-boilerplate/static/js/runtime-main.6a4fe257.js",
+    "runtime-main.js.map": "/pulkitgpt27/react-boilerplate/static/js/runtime-main.6a4fe257.js.map",
+    "static/js/2.791bcafd.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/2.791bcafd.chunk.js",
+    "static/js/2.791bcafd.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/2.791bcafd.chunk.js.map",
+    "static/js/3.a47b5ebd.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/3.a47b5ebd.chunk.js",
+    "static/js/3.a47b5ebd.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/3.a47b5ebd.chunk.js.map",
+    "static/js/4.cb95462b.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/4.cb95462b.chunk.js",
+    "static/js/4.cb95462b.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/4.cb95462b.chunk.js.map",
+    "static/js/5.7dfbcf43.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/5.7dfbcf43.chunk.js",
+    "static/js/5.7dfbcf43.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/5.7dfbcf43.chunk.js.map",
+    "static/js/6.ce535e54.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/6.ce535e54.chunk.js",
+    "static/js/6.ce535e54.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/6.ce535e54.chunk.js.map",
+    "static/js/7.24674c93.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/7.24674c93.chunk.js",
+    "static/js/7.24674c93.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/7.24674c93.chunk.js.map",
+    "static/js/8.b176c240.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/8.b176c240.chunk.js",
+    "static/js/8.b176c240.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/8.b176c240.chunk.js.map",
+    "static/js/9.dee82924.chunk.js": "/pulkitgpt27/react-boilerplate/static/js/9.dee82924.chunk.js",
+    "static/js/9.dee82924.chunk.js.map": "/pulkitgpt27/react-boilerplate/static/js/9.dee82924.chunk.js.map",
+    "index.html": "/pulkitgpt27/react-boilerplate/index.html",
+    "static/css/main.453e685c.chunk.css.map": "/pulkitgpt27/react-boilerplate/static/css/main.453e685c.chunk.css.map",
+    "static/js/2.791bcafd.chunk.js.LICENSE.txt": "/pulkitgpt27/react-boilerplate/static/js/2.791bcafd.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6a4fe257.js",
+    "static/js/2.791bcafd.chunk.js",
+    "static/css/main.453e685c.chunk.css",
+    "static/js/main.fa941d57.chunk.js"
+  ]
+}
