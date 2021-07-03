@@ -1,11 +1,10 @@
-// Generated with util/create-component.js
 import React from "react";
 import NotificationAlert from "./NotificationAlert";
 import { NotificationLevel } from "../../reducers/notificationReducer/notificationReducer";
 import { action } from "@storybook/addon-actions";
 
 export default {
-    title: "Molecule/NotificationAlert"
+    title: "NotificationAlert"
 };
   
 const actions = {

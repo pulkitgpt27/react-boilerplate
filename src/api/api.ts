@@ -44,7 +44,7 @@ function handleResponse(response: any) {
 
 export const GET = (url: string) =>
   fetch(url, {
-    credentials: "include"
+    // credentials: "include"
   })
     .then(handleResponse)
     .then(data => data)

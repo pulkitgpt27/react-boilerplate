@@ -1,23 +1,24 @@
 import { useEffect, useCallback, useRef, useState, MutableRefObject } from 'react'
+import * as api from '../api/api';
 
 interface payloadType {
   page: number
 }
 // make API calls and pass the returned data via dispatch
-export const useFetch = (payload: payloadType, dispatch: any): void => {
+export const useFetch = (payload: payloadType, dispatch: any) => {
   useEffect(() => {
     dispatch({ type: 'FETCHING_IMAGES', fetching: true })
-    fetch(`https://picsum.photos/v2/list?page=${payload.page}&limit=10`)
-      .then((data) => data.json())
+    try {
+      api.GET(`https://picsum.photos/v2/list?page=${payload.page}&limit=10`)
       .then((images) => {
-        dispatch({ type: 'STACK_IMAGES', images })
+        dispatch({ type: 'STACK_IMAGES', images });
         dispatch({ type: 'FETCHING_IMAGES', fetching: false })
       })
-      .catch((e) => {
+    }
+    catch(e: any) {
         // handle error
         dispatch({ type: 'FETCHING_IMAGES', fetching: false })
-        return e
-      })
+    }
   }, [dispatch, payload.page])
 }
 
