@@ -8,7 +8,7 @@ interface LazyLoadProps {
   fallBack?: React.ReactNode
   className?: string
   root?: Element | Document | null
-  threshold?: number | number[]
+  threshold?: number | number[] //A threshold of 1.0 means that when 100% of the target is visible within the element specified by the root
   rootMargin?: string
   forward?: boolean
 }

@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row'
 import Card from 'react-bootstrap/Card'
 import { useFetch, useInfiniteScroll } from '../../utils/customHooks'
 import LazyLoad from '../../components/LazyLoad/LazyLoad';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface LazyImagesProps {}
@@ -58,6 +59,7 @@ const LazyImages: React.FC<LazyImagesProps> = () => {
 
   return (
     <div className="">
+    <ErrorBoundary>
       <Container id="images">
         <Row style={{ justifyContent: 'center' }}>
           {imgData.images.map((image: any, index: number) => {
@@ -65,9 +67,9 @@ const LazyImages: React.FC<LazyImagesProps> = () => {
             return (
               // eslint-disable-next-line react/no-array-index-key
               <Card key={index} style={{ width: '18rem' }}>
-                <LazyLoad >
+                <LazyLoad rootMargin="200px">
                   <Card.Img
-                    // alt="https://picsum.photos/id/870/300/300?grayscale&blur=2"
+                    alt="https://picsum.photos/id/870/300/300?grayscale&blur=2"
                     src={download_url}
                     variant="top"
                   />
@@ -94,6 +96,7 @@ const LazyImages: React.FC<LazyImagesProps> = () => {
         style={{ border: '1px solid red' }}
         ref={bottomBoundaryRef}
       />
+    </ErrorBoundary>
     </div>
   )
 }

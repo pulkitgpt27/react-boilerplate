@@ -3,6 +3,7 @@ import { RootState } from '../../reducers/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPostRequest } from '../../reducers/postReducer/postReducer';
 import { AuthContext } from '../../App';
+import ErrorBoundary from '../../components/ErrorBoundary/ErrorBoundary';
 const PostPage: React.FC = () => {
   const dispatch = useDispatch();
   const user  = useContext(AuthContext);
@@ -10,11 +11,12 @@ const PostPage: React.FC = () => {
     return state.posts
   })
   useEffect(() => {
-    dispatch(fetchPostRequest({postId: 1000}))
+    dispatch(fetchPostRequest({postId: 1}))
   }, [dispatch])
   
   return (
     <>
+    <ErrorBoundary>
       <div id="store">
         From Store
         {posts.map((post) => {
@@ -24,6 +26,7 @@ const PostPage: React.FC = () => {
         })
         }
       </div>
+    </ErrorBoundary>
       <div id="context" >
         From AuthContext
         <div>{user?.id}</div>
