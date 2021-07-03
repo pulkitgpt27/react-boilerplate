@@ -26,12 +26,12 @@ const LazyImages: React.FC<LazyImagesProps> = () => {
     action: IMAGESACTIONTYPE
   ) => {
     switch (action.type) {
-      case 'STACK_IMAGES':
-        return { ...state, images: state.images.concat(action.images) }
-      case 'FETCHING_IMAGES':
-        return { ...state, fetching: action.fetching }
-      default:
-        return state
+    case 'STACK_IMAGES':
+      return { ...state, images: state.images.concat(action.images) }
+    case 'FETCHING_IMAGES':
+      return { ...state, fetching: action.fetching }
+    default:
+      return state
     }
   }
 
@@ -40,10 +40,10 @@ const LazyImages: React.FC<LazyImagesProps> = () => {
     action: PAGEACTIONTYPE
   ) => {
     switch (action.type) {
-      case 'ADVANCE_PAGE':
-        return { ...state, page: state.page + 1 }
-      default:
-        return state
+    case 'ADVANCE_PAGE':
+      return { ...state, page: state.page + 1 }
+    default:
+      return state
     }
   }
 
@@ -59,44 +59,44 @@ const LazyImages: React.FC<LazyImagesProps> = () => {
 
   return (
     <div className="">
-    <ErrorBoundary>
-      <Container id="images">
-        <Row style={{ justifyContent: 'center' }}>
-          {imgData.images.map((image: any, index: number) => {
-            const { author, download_url } = image
-            return (
+      <ErrorBoundary>
+        <Container id="images">
+          <Row style={{ justifyContent: 'center' }}>
+            {imgData.images.map((image: any, index: number) => {
+              const { author, download_url } = image
+              return (
               // eslint-disable-next-line react/no-array-index-key
-              <Card key={index} style={{ width: '18rem' }}>
-                <LazyLoad rootMargin="200px">
-                  <Card.Img
-                    alt="https://picsum.photos/id/870/300/300?grayscale&blur=2"
-                    src={download_url}
-                    variant="top"
-                  />
-                </LazyLoad>
-                <Card.Body>
-                  <Card.Title>Card Title</Card.Title>
-                </Card.Body>
-                <Card.Footer>
-                  <small className="text-muted">Shot by: {author}</small>
-                </Card.Footer>
-              </Card>
-            )
-          })}
-        </Row>
-      </Container>
+                <Card key={index} style={{ width: '18rem' }}>
+                  <LazyLoad rootMargin="200px">
+                    <Card.Img
+                      alt="https://picsum.photos/id/870/300/300?grayscale&blur=2"
+                      src={download_url}
+                      variant="top"
+                    />
+                  </LazyLoad>
+                  <Card.Body>
+                    <Card.Title>Card Title</Card.Title>
+                  </Card.Body>
+                  <Card.Footer>
+                    <small className="text-muted">Shot by: {author}</small>
+                  </Card.Footer>
+                </Card>
+              )
+            })}
+          </Row>
+        </Container>
 
-      {imgData.fetching && (
-        <div className="text-center bg-secondary m-auto p-3">
-          <p className="m-0 text-white">Getting images</p>
-        </div>
-      )}
-      <div
-        id="page-bottom-boundary"
-        style={{ border: '1px solid red' }}
-        ref={bottomBoundaryRef}
-      />
-    </ErrorBoundary>
+        {imgData.fetching && (
+          <div className="text-center bg-secondary m-auto p-3">
+            <p className="m-0 text-white">Getting images</p>
+          </div>
+        )}
+        <div
+          id="page-bottom-boundary"
+          style={{ border: '1px solid red' }}
+          ref={bottomBoundaryRef}
+        />
+      </ErrorBoundary>
     </div>
   )
 }

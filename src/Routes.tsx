@@ -1,4 +1,4 @@
-import { lazy } from 'react';
+import React, { lazy } from 'react';
 import { HashRouter, Switch, Route } from 'react-router-dom'
 import constants from './utils/constants';
 const PostPage = lazy(() => import('./pages/PostPage/PostPage'));
@@ -8,7 +8,7 @@ const NoMatch = lazy(() => import('./pages/NoMatch/NoMatch'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
 const PrivateRoute = lazy(() => import('./auth/PrivateRoute'));
 
-const Routes = () => {
+const Routes: React.FC = () => {
   return (
     <HashRouter>
       <Switch>

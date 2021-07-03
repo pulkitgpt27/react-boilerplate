@@ -16,17 +16,17 @@ const PostPage: React.FC = () => {
   
   return (
     <>
-    <ErrorBoundary>
-      <div id="store">
+      <ErrorBoundary>
+        <div id="store">
         From Store
-        {posts.map((post) => {
-          return (
-            <div key={`${post.id}`}>{post.id}</div>
-          )
-        })
-        }
-      </div>
-    </ErrorBoundary>
+          {posts.map((post) => {
+            return (
+              <div key={`${post.id}`}>{post.id}</div>
+            )
+          })
+          }
+        </div>
+      </ErrorBoundary>
       <div id="context" >
         From AuthContext
         <div>{user?.id}</div>

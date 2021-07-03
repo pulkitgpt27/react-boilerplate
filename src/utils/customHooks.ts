@@ -10,14 +10,14 @@ export const useFetch = (payload: payloadType, dispatch: any) => {
     dispatch({ type: 'FETCHING_IMAGES', fetching: true })
     try {
       api.GET(`https://picsum.photos/v2/list?page=${payload.page}&limit=10`)
-      .then((images) => {
-        dispatch({ type: 'STACK_IMAGES', images });
-        dispatch({ type: 'FETCHING_IMAGES', fetching: false })
-      })
+        .then((images) => {
+          dispatch({ type: 'STACK_IMAGES', images });
+          dispatch({ type: 'FETCHING_IMAGES', fetching: false })
+        })
     }
     catch(e: any) {
-        // handle error
-        dispatch({ type: 'FETCHING_IMAGES', fetching: false })
+      // handle error
+      dispatch({ type: 'FETCHING_IMAGES', fetching: false })
     }
   }, [dispatch, payload.page])
 }
@@ -45,36 +45,36 @@ export const useInfiniteScroll = (scrollRef: any, dispatch: any): void => {
 }
 
 
-export function useIntersectionObserver(ref: MutableRefObject<Element | null>, options: IntersectionObserverInit = {}, forward: boolean = true){
+export function useIntersectionObserver(ref: MutableRefObject<Element | null>, options: IntersectionObserverInit = {}, forward = true){
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [element, setElement] = useState<Element | null>(null);
   const observer = useRef<null | IntersectionObserver>(null);
   const cleanOb = () => {
-      if (observer.current) {
-          observer.current.disconnect()
-      }
+    if (observer.current) {
+      observer.current.disconnect()
+    }
   }
   useEffect(() => {
-      setElement(ref.current);
+    setElement(ref.current);
   }, [ref]);
   
   useEffect(() => {
     if (!element) return;
     cleanOb();
     const ob = observer.current = new IntersectionObserver(([entry]) => {
-        const isElementIntersecting = entry.isIntersecting;
-        if (!forward) {
-          setIsIntersecting(isElementIntersecting)
-        } else if (forward && !isIntersecting && isElementIntersecting) {
-            setIsIntersecting(isElementIntersecting);
-            cleanOb()
-        };
+      const isElementIntersecting = entry.isIntersecting;
+      if (!forward) {
+        setIsIntersecting(isElementIntersecting)
+      } else if (forward && !isIntersecting && isElementIntersecting) {
+        setIsIntersecting(isElementIntersecting);
+        cleanOb()
+      }
     }, { ...options })
     ob.observe(element);
     return () => {
-        cleanOb()
+      cleanOb()
     }
-}, [element, options, forward, isIntersecting ])
+  }, [element, options, forward, isIntersecting ])
 
   return isIntersecting;
 }

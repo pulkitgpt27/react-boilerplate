@@ -1,4 +1,4 @@
-import { createContext, Suspense } from 'react';
+import React, { createContext, Suspense } from 'react';
 import Routes from './Routes';
 import AuthProvider from './auth/AuthProvider';
 import NotificationQueue from './components/Notification/NotificationQueue';
@@ -14,7 +14,7 @@ const user = {
   name: "Pulkit"
 }
 export const AuthContext = createContext<User | null>(null);
-function App() {
+const App: React.FC = () => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <NotificationQueue maxAlerts={3}/>
