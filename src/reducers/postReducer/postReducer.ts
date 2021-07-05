@@ -25,7 +25,7 @@ export const fetchPostSuccess = (payload: PostType) => ({
 });
 
 interface FetchPostErrorPayoad {
-  error: null | string | Object
+  error: unknown;
 }
 export const fetchPostFailure = (payload: FetchPostErrorPayoad) => ({
   type: PostActionTypes.FETCH_POST_FAILURE,
@@ -35,7 +35,7 @@ export const fetchPostFailure = (payload: FetchPostErrorPayoad) => ({
 
 export interface PostStore {
   posts: Array<PostType>,
-  error: null | string | Object,
+  error: unknown,
   postLoading: null | boolean
 }
 
@@ -48,12 +48,12 @@ const initialState: PostStore = {
 
 const posts = (state: PostStore = initialState, actions: any) => {
   switch(actions.type) {
-    case PostActionTypes.FETCH_POST_REQUEST:
+  case PostActionTypes.FETCH_POST_REQUEST:
     return {
       ...state,
       pending: true
     }
-    case PostActionTypes.FETCH_POST_SUCCESS:
+  case PostActionTypes.FETCH_POST_SUCCESS:
     const posts = [...state.posts];
     posts.push(actions.payload)
     return {
@@ -62,12 +62,12 @@ const posts = (state: PostStore = initialState, actions: any) => {
       postLoading: false,
       error: null
     }
-    case PostActionTypes.FETCH_POST_FAILURE:
+  case PostActionTypes.FETCH_POST_FAILURE:
     return {
       ...state,
       error: actions.payload.error
     }
-    default: 
+  default: 
     return {
       ...state
     }

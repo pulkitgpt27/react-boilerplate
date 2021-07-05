@@ -97,7 +97,7 @@ export const PATCH = (url: string, body: any) =>
     .then(res => res.json())
     .then(res => res);
 
-export const DELETE = (url:string, body: any) =>
+export const DELETE = (url: string, body: any) =>
   fetch(url, {
     method: "DELETE",
     credentials: "include",

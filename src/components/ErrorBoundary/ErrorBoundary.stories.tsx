@@ -1,3 +1,4 @@
+import React from 'react';
 import ErrorBoundary from './ErrorBoundary';
 export default {
   title: "ErrorBoundary"
@@ -13,10 +14,10 @@ const BuggyComponent = () => {
 export const Deafault = () => {
   return (
     <>
-    <ErrorBoundary>
-      <BuggyComponent />
-    </ErrorBoundary>
-    <div>Hey Im Without bug and still standing</div>
+      <ErrorBoundary>
+        <BuggyComponent />
+      </ErrorBoundary>
+      <div>Hey Im Without bug and still standing</div>
     </>
   );
 }

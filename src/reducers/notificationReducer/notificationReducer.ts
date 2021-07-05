@@ -34,7 +34,7 @@ const initialState : Notification[] = [];
 let nextTodoId = 0;
 const notifications = (state: Array<Notification> = initialState, action: any) => {
   switch(action.type) {
-    case NotificationActionTypes.ADD_NOTIFICATION:
+  case NotificationActionTypes.ADD_NOTIFICATION:
     const notification: Notification = {
       id: '' + nextTodoId++,
       message: action.errorMessage,
@@ -44,7 +44,7 @@ const notifications = (state: Array<Notification> = initialState, action: any) =
     state.push(notification);
     return state;
     
-    case NotificationActionTypes.TOGGLE_NOTIFICATION_READ:
+  case NotificationActionTypes.TOGGLE_NOTIFICATION_READ:
     const newNotifications = state.map(notification => {
       if(notification.id === action.id) {
         notification.read = !notification.read
@@ -52,7 +52,7 @@ const notifications = (state: Array<Notification> = initialState, action: any) =
       return notification;
     });
     return newNotifications;
-    default: 
+  default: 
     return initialState;
   }
 }
