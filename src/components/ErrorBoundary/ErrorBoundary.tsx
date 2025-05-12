@@ -1,36 +1,39 @@
-import React, { ReactNode, ErrorInfo } from 'react';
+import React, { ReactNode, ErrorInfo } from "react";
 
 interface ErrorBoundaryProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 interface ErrorBoundaryState {
   error: Error | null;
   errorInfo: ErrorInfo | null;
 }
-class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+class ErrorBoundary extends React.Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
-    this.state = { 
+    this.state = {
       error: null,
-      errorInfo: null 
+      errorInfo: null,
     };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     this.setState({
       error: error,
-      errorInfo: errorInfo
-    })
+      errorInfo: errorInfo,
+    });
   }
 
-  render() {
+  render(): ReactNode {
     if (this.state.errorInfo) {
       // You can render any custom fallback UI
       return (
         <div>
           <h2>Something went wrong.</h2>
-          <details style={{ whiteSpace: 'pre-wrap' }}>
+          <details style={{ whiteSpace: "pre-wrap" }}>
             {this.state.error && this.state.error.toString()}
             <br />
             {this.state.errorInfo.componentStack}
@@ -39,7 +42,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundarySta
       );
     }
 
-    return this.props.children; 
+    return this.props.children;
   }
 }
 
