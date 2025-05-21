@@ -1,0 +1,36 @@
+.task-select-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+
+  .task-select {
+    width: 100%;
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    // For Internet Explorer / Edge legacy
+    &::-ms-expand {
+      display: none;
+    }
+  }
+
+  // Custom arrow
+  &::after {
+    content: '▼'; // Unicode character
+    font-size: 0.75rem;
+    color: #555;
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+}
