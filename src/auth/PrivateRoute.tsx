@@ -1,30 +1,28 @@
-import React from 'react'
-import { Redirect, Route, RouteProps } from 'react-router-dom'
-import useAuth from './useAuth'
-import constants from '../utils/constants';
+import React, { ReactNode } from "react";
+import { Navigate, useLocation } from "react-router-dom";
+import useAuth from "./useAuth";
+import constants from "../utils/constants";
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface PrivateRouteProps extends RouteProps {}
-
-const PrivateRoute: React.FC<PrivateRouteProps> = ({ children, ...rest }) => {
-  const auth = useAuth()
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        auth?.user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: constants.routes.login,
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
-  )
+interface PrivateRouteProps {
+  children: ReactNode;
 }
 
-export default PrivateRoute
+const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
+  const auth = useAuth();
+  const location = useLocation();
+
+  if (!auth?.user) {
+    // Redirect to login page and preserve the current location for redirect after login
+    return (
+      <Navigate
+        to={constants.routes.login}
+        state={{ from: location }}
+        replace
+      />
+    );
+  }
+
+  return children;
+};
+
+export default PrivateRoute;
