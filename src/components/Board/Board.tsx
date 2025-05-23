@@ -13,10 +13,10 @@ const Board = () => {
   const checkWinner = (): boolean => {
     let p1 = 0,
       p2 = 0;
-    //check rows
     for (let i = 0; i < N; i++) {
       (p1 = 0), (p2 = 0);
       for (let j = 0; j < N; j++) {
+        if (i == 0) console.log("row 0", gameBoard[i][j]);
         if (gameBoard[i][j] === "X") p1++;
         if (gameBoard[i][j] === "O") p2++;
       }
