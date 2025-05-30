@@ -5,7 +5,7 @@ type Props = {
   currentStatus: string;
   taskId: number;
 };
-const StatusSelect = ({ currentStatus, taskId }: Props) => {
+const StatusSelect = ({ currentStatus, taskId }: Props): React.ReactElement => {
   const [status, setStatus] = useState<string>(currentStatus);
 
   const changeStatus = (e: React.ChangeEvent<HTMLSelectElement>) => {
