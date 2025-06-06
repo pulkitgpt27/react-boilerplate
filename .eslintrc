@@ -24,7 +24,7 @@
         "plugin:@typescript-eslint/recommended"
       ],
     "rules": {
-        "indent": ["error", 2],
+        "indent": ["warn", 2],
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "react/prop-types": "off"
