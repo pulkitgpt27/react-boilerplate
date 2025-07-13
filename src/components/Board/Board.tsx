@@ -2,91 +2,68 @@ import React, { useState } from "react";
 import Cell from "../Cell/Cell";
 import "./Board.scss";
 import { N } from "../../constants";
-import { sendRequest } from "../../data/data";
 
+const initialBoard = Array.from(Array(N), () => new Array(N).fill(" "));
 const Board = () => {
-  const [gameBoard, setGameBoard] = useState<string[][]>(
-    Array.from(Array(N), () => new Array(N).fill(" "))
-  );
-  const [turn, setTurn] = useState("X");
+  const [gameBoard, setGameBoard] = useState<string[][]>(initialBoard);
+  const [turn, setTurn] = useState<"X" | "O">("X");
 
-  const checkWinner = (): boolean => {
-    let p1 = 0,
-      p2 = 0;
+  const checkWinner = (row: number, col: number): boolean => {
+    //check row
+    let count = 0;
     for (let i = 0; i < N; i++) {
-      (p1 = 0), (p2 = 0);
-      for (let j = 0; j < N; j++) {
-        if (i == 0) console.log("row 0", gameBoard[i][j]);
-        if (gameBoard[i][j] === "X") p1++;
-        if (gameBoard[i][j] === "O") p2++;
+      if (gameBoard[row][i] == turn) {
+        count++;
       }
-      if (p1 === N || p2 === N) return true;
+      if (count == N) return true;
     }
+    count = 0;
     //check col
     for (let i = 0; i < N; i++) {
-      p1 = 0;
-      p2 = 0;
-      for (let j = 0; j < N; j++) {
-        if (gameBoard[j][i] === "X") p1++;
-        if (gameBoard[j][i] === "O") p2++;
+      if (gameBoard[i][col] == turn) {
+        count++;
       }
-      if (p1 === N || p2 === N) return true;
+      if (count == N) return true;
     }
-
-    //check diag
-    (p1 = 0), (p2 = 0);
+    count = 0;
+    //check first diagonal
     for (let i = 0; i < N; i++) {
-      if (gameBoard[i][N - i - 1] === "X") p1++;
-      if (gameBoard[i][N - i - 1] === "O") p2++;
-      if (p1 === N || p2 === N) return true;
+      if (gameBoard[i][i] == turn) {
+        count++;
+      }
+      if (count == N) return true;
     }
 
-    //check diag
-    (p1 = 0), (p2 = 0);
-    for (let i = N - 1; i >= 0; i--) {
-      if (gameBoard[i][i] === "X") p1++;
-      if (gameBoard[i][i] === "O") p2++;
-      if (p1 === N || p2 === N) return true;
+    //check second diagonal
+    for (let i = 0; i < N; i++) {
+      if (gameBoard[i][N - i - 1] == turn) {
+        count++;
+      }
+      if (count == N) return true;
     }
     return false;
   };
 
+  const onReset = () => {
+    const newBoard = Array.from(Array(N), () => new Array(N).fill(" "));
+    setGameBoard(newBoard);
+    setTurn("X");
+  };
   const onMove = (row: number, col: number) => {
     const tempBoard = gameBoard;
-    if (gameBoard[row][col] === "X" || gameBoard[row][col] === "O") {
+    if (gameBoard[row][col] !== " ") {
       return;
     }
-    const params = {
-      row,
-      col,
-      value: turn,
-    };
-    if (turn == "X") {
-      tempBoard[row][col] = "X";
-      setGameBoard(tempBoard);
-      const params = {
-        row,
-        col,
-        value: turn,
-      };
-      sendRequest(params).then((data) => {
-        setGameBoard(data.newBoard);
-      });
-      if (checkWinner()) {
-        alert("X wins");
-      }
-      setTurn("O");
+    tempBoard[row][col] = turn;
+    setGameBoard(tempBoard);
+    // sendRequest(params).then((data) => {
+    //   setGameBoard(data.newBoard);
+    // });
+    if (checkWinner(row, col)) {
+      alert(`${turn} wins`);
+      onReset();
     } else {
-      tempBoard[row][col] = "O";
-      setGameBoard(tempBoard);
-
-      sendRequest(params).then((data) => {
-        setGameBoard(data.newBoard);
-      });
-      if (checkWinner()) {
-        alert("O wins");
-      }
-      setTurn("X");
+      setTurn(turn === "X" ? "O" : "X");
     }
   };
   return (
@@ -109,6 +86,7 @@ const Board = () => {
         );
       })}
       <div>{`Turn: ${turn}`}</div>
+      <button onClick={onReset}>Reset</button>
     </div>
   );
 };
